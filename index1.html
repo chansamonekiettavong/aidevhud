@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>ສູນພັດທະນາສີມືແຮງງານແຂວງສະຫວັນນະເຂດ</title>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0d47a1;
+            --accent-color: #ff9800;
+            --light-color: #f5f9ff;
+            --dark-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Lao', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .logo-text span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Training Programs */
+        .training-programs {
+            background-color: var(--light-color);
+        }
+        
+        .programs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .program-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .program-content p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .duration {
+            display: flex;
+            align-items: center;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .duration i {
+            margin-right: 5px;
+        }
+        
+        /* Statistics */
+        .statistics {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .contact-form {
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--secondary-color);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- ເພີ່ມຮູບໂລໂກ້ສູນກ່ອນຊື່ -->
+                <img src="ໂລໂກ້ສູນ conv 1.jpeg" alt="ໂລໂກ້ສູນ" style="height:50px; margin-right:15px;">
+                <div class="logo-text">
+                    ສູນພັດທະນາສີມືແຮງງານ
+                    <span>ແຂວງສະຫວັນນະເຂດ</span>
+                </div>
+            </div>
+            
+            <nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="nav-menu">
+                    <li><a href="#home">ໜ້າຫຼັກ</a></li>
+                    <li><a href="#about">ກ່ຽວກັບພວກເຮົາ</a></li>
+                    <li><a href="#training">ຫຼັກສູດຝຶກອົບຮົມ</a></li>
+                    <li><a href="#statistics">ຜົນງານ</a></li>
+                    <li><a href="#contact">ຕິດຕໍ່ພວກເຮົາ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <!-- Hero Section -->
+            <h1>ສູນພັດທະນາສີມືແຮງງານແຂວງສະຫວັນນະເຂດ</h1>
+            <p>ພັດທະນາທັກສະວິຊາຊີບ ເພື່ອການຈົບງານທີ່ດີຂອງຊາວໜຸ່ມແຂວງສະຫວັນນະເຂດ</p>
+            <a href="#training" class="btn">ສຳຫຼວດຫຼັກສູດຝຶກອົບຮົມ</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>ກ່ຽວກັບພວກເຮົາ</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>ປະຫວັດຄວາມເປັນມາ ແລະ ພາລະບົດບາດ</h3>
+                    <p>ສູນພັດທະນາສີມືແຮງງານແຂວງສະຫວັນນະເຂດ ຖືກສ້າງຕັ້ງຂຶ້ນເພື່ອພັດທະນາທັກສະວິຊາຊີບຂອງຊາວໜຸ່ມໃນແຂວງ, ເພື່ອເຮັດໃຫ້ພວກເຂົາມີວຽກເຮັດທີ່ດີ, ມີລາຍໄດ້ທີ່ມີເງື່ອນໄຂ ແລະ ສາມາດພັດທະນາຊີວິດການເປັນຢູ່ຂອງຕົນເອງ ແລະ ຄອບຄົວ.</p>
+                    <p>ພວກເຮົາມີພາລະບົດບາດໃນການສ້າງໂອກາດການຝຶກອົບຮົມທີ່ມີຄຸນນະພາບ ແລະ ເໝາະສົມກັບຄວາມຕ້ອງການຂອງຕະຫຼາດແຮງງານທ້ອງຖິ່ນ ແລະ ສາກົນ.</p>
+                    <p>ໂດຍຜ່ານການຮ່ວມມືກັບອົງການຈັດຕັ້ງທັບພາຍໃນ ແລະ ຕ່າງປະເທດ, ພວກເຮົາສືບຕໍ່ສ້າງໂອກາດໃຫ້ຊາວໜຸ່ມໄດ້ຮັບການພັດທະນາທັກສະຢ່າງຕໍ່ເນື່ອງ.</p>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ກ່ຽວກັບສູນ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Programs -->
+    <section id="training" class="section training-programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>ຫຼັກສູດຝຶກອົບຮົມ</h2>
+            </div>
+            
+            <div class="programs-container">
+                <!-- Program 1 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ</h3>
+                        <p>ຝຶກອົບຮົມດ້ານການໃຊ້ຄອມພິວເຕີ, ການຂຽນໂປຣແກຣມ, ການອອກແບບເວັບໄຊທ໌, ແລະ ການບໍລິຫານລະບົບເຄືອຂ່າຍ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 6 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1610041321327-b794c052db27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ການຊ່າງໄຟຟ້າ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ການຊ່າງໄຟຟ້າ</h3>
+                        <p>ຝຶກອົບຮົມດ້ານການຕິດຕັ້ງ ແລະ ບຳລຸງຮັກສາເຄື່ອງໃຊ້ໄຟຟ້າໃນຄົວເຮືອນ ແລະ ອຸດສາຫະກຳ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 4 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ການຊ່າງກົນຈັກ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ການຊ່າງກົນຈັກ</h3>
+                        <p>ຝຶກອົບຮົມດ້ານການຊ່ວຍແລ່ນ ແລະ ບຳລຸງຮັກສາລົດຍົນ, ເຄື່ອງຈັກກະສານ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 5 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ການບໍລິການໂຮງແຮມ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ການບໍລິການໂຮງແຮມ</h3>
+                        <p>ຝຶກອົບຮົມດ້ານການບໍລິການລູກຄ້າ, ການຈັດການໂຮງແຮມ, ແລະ ການປຸງແຕ່ງອາຫານ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 3 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 5 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ຊ່າງເຊືອກ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ຊ່າງເຊືອມ</h3>
+                        <p>ຝຶກອົບຮົມດ້ານການຕັດຊື່, ການອອກແບບເສື້ອຜໍາ, ແລະ ການຜະລິດເຄື່ອງນຸ່ງຫົ່ມ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 4 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 6 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1581093458791-5d4b2a8e7b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ຊ່າງເຫຼັກ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ຊ່າງເຫຼັກ</h3>
+                        <p>ຝຶກອົບຮົມດ້ານການເຮັດວຽກເຫຼັກ, ການໂຟມເຫຼັກ, ແລະ ການຕິດຕັ້ງໂຄງສ້າງເຫຼັກ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 5 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ເພີ່ມສາຂາອາຊີບໃໝ່ໃນສ່ວນຫຼັກສູດຝຶກອົບຮົມ -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="ຊ່າງກໍ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ຊ່າງກໍ</h3>
+                        <p>ຝຶກອົບຮົມດ້ານການກໍສ້າງ ແລະ ການຄວບຄຸມງານກໍສ້າງພື້ນຖານ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 4 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="ຊ່າງຕັດຫຍິບ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ຊ່າງຕັດຫຍິບ</h3>
+                        <p>ຝຶກອົບຮົມການຕັດແບບ ແລະ ຕັດຫຍິບເສື້ອຜໍາ, ແລະ ການຜະລິດເຄື່ອງນຸ່ງຫົ່ມ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 3 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="ຊ່າງຖັກວິກ">
+                    </div>
+                    <div class="program-content">
+                        <h3>ຊ່າງຖັກວິກ</h3>
+                        <p>ຝຶກອົບຮົມການຖັກວິກ ແລະ ການອອກແບບວິກຜົມທຸກຮູບແບບ.</p>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> 2 ເດືອນ
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="section statistics">
+        <div class="container">
+            <div class="section-title">
+                <h2>ຜົນງານຂອງພວກເຮົາ</h2>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">1,250+</div>
+                    <div class="stat-label">ນັກສຶກສາຝຶກອົບຮົມ</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">ຫຼັກສູດຝຶກອົບຮົມ</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">ອັດຕາການຈົບງານ</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">ພາກສ່ວນຮ່ວມມື</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>ຕິດຕໍ່ພວກເຮົາ</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>ຂໍ້ມູນຕິດຕໍ່</h3>
+                    
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">
+                            <h4>ທີ່ຢູ່</h4>
+                            <p>ບ້ານ ສົມພັດວິໄລ, ເມືອງ ອູທູມພອນ, ແຂວງ ສະຫວັນະເຂດ, ລາວ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-text">
+                            <h4>ໂທລະສັບ</h4>
+                            <p>020 91836369</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-text">
+                            <h4>ອີເມວ</h4>
+                            <p>info@labourcenter-sx.com</p>
+                            <p>training@labourcenter-sx.com</p>
+                            <p>chansamone1987@hotmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-text">
+                            <h4>ເວລາເປີດບໍລິການ</h4>
+                            <p>ຈັນ - ສຸກ: 8:00 ເຊົ້າ - 5:00 ແລງ</p>
+                            <p>ເສົາ: 8:00 ເຊົ້າ - 12:00 ທ່ຽງ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>ສົ່ງຂໍ້ຄວາມຫາພວກເຮົາ</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">ຊື່ ແລະ ນາມສະກຸນ</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">ອີເມວ</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">ເບີໂທລະສັບ</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">ຫົວຂໍ້</label>
+                            <select id="subject" required>
+                                <option value="">ເລືອກຫົວຂໍ້</option>
+                                <option value="training">ຂໍ້ມູນຫຼັກສູດຝຶກອົບຮົມ</option>
+                                <option value="registration">ລົງທະບຽນເຂົ້າຮຽນ</option>
+                                <option value="partnership">ການຮ່ວມມື</option>
+                                <option value="other">ອື່ນໆ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">ຂໍ້ຄວາມ</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">ສົ່ງຂໍ້ຄວາມ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>ສູນພັດທະນາສີມືແຮງງານ</h4>
+                    <p>ແຂວງສະຫວັນນະເຂດ, ລາວ</p>
+                    <p>ພວກເຮົາມີຄວາມມຸ່ງໝາຍທີ່ຈະພັດທະນາທັກສະວິຊາຊີບຂອງຊາວໜຸ່ມໃນແຂວງສະຫວັນນະເຂດ, ເພື່ອເປັນກຳລັງແຮງພັດທະນາຊາດ.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>ລິ້ງເພີ່ມເຕີມ</h4>
+                    <ul>
+                        <li><a href="#">ກ່ຽວກັບພວກເຮົາ</a></li>
+                        <li><a href="#">ຫຼັກສູດຝຶກອົບຮົມ</a></li>
+                        <li><a href="#">ຂ່າວສານ ແລະ ປະກາດ</a></li>
+                        <li><a href="#">ຕຳແໜ່ງວຽກເຮັດງານທຳ</a></li>
+                        <li><a href="#">ຄຳຖາມທີ່ພົບເລື້ອຍ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>ຫຼັກສູດຝຶກອົບຮົມ</h4>
+                    <ul>
+                        <li><a href="#">ເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ</a></li>
+                        <li><a href="#">ການຊ່າງໄຟຟ້າ</a></li>
+                        <li><a href="#">ການຊ່າງກົນຈັກ</a></li>
+                        <li><a href="#">ການບໍລິການໂຮງແຮມ</a></li>
+                        <li><a href="#">ຊ່າງເຊືອກ ແລະ ຊ່າງເຫຼັກ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>ຂ່າວລ່າສຸດ</h4>
+                    <ul>
+                        <li><a href="#">ງານເປີດຫຼັກສູດໃໝ່ ດ້ານເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ</a></li>
+                        <li><a href="#">ພິທີມອບ-ຮັບໃບຢັ້ງຢືນຜູ່ສຳເລັດການຝຶກອົບຮົມ</a></li>
+                        <li><a href="#">ການຮ່ວມມືກັບບໍລິສັດຕ່າງປະເທດ</a></li>
+                        <li><a href="#">ຕາຕະລາງການຝຶກອົບຮົມປີ 2025</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 ສູນພັດທະນາສີມືແຮງງານແຂວງສະຫວັນນະເຂດ. ສະຫງວນລິຂະສິດ.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For this example, we'll just show an alert
+            alert('ຂອບໃຈທີ່ທ່ານສົ່ງຂໍ້ຄວາມ! ພວກເຮົາຈະຕິດຕໍ່ທ່ານໃນໄວໆນີ້.');
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
